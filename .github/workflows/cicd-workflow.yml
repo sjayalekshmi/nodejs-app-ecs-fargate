@@ -3,7 +3,11 @@ name: CICD
 on:
   push:
     branches: [ deploy-to-ecs-fargate ]
-
+env:
+  AWS_REGION : "us-east-2"    
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
 jobs:
   build-and-deploy:
     runs-on: [ ubuntu-latest ]
@@ -13,9 +17,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'eu-north-1'
+          role-to-assume: arn:aws:iam::415999742518:role/githubassumeroleadminaccess
+          role-session-name: samplerolesession
+          aws-region: ${{ env.AWS_REGION }}
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1

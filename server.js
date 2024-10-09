@@ -70,6 +70,7 @@ app.use("/graphql", graphqlHTTP({
 );
 
 app.get("/rest/getAllUsers", (req, res) => {
+    console.log("Inside the function rest- getAllusers");
     res.send(userData)
    });
 

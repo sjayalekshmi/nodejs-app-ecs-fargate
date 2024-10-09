@@ -64,10 +64,19 @@ const Mutation = new GraphQLObjectType({
 
 const schema = new GraphQLSchema({query: RootQuery, mutation: Mutation})
 app.use("/graphql", graphqlHTTP({
+     res.send(`
     schema,
     graphiql: true,
   })
 );
+
+app.get("/", function (req, res) {
+res.send(`
+    <h2>
+     That was easy.
+    </h2>
+  `);
+});
 
 app.get("/rest/getAllUsers", (req, res) => {
     console.log("Inside the function rest- getAllusers");
@@ -75,5 +84,5 @@ app.get("/rest/getAllUsers", (req, res) => {
    });
 
 app.listen(PORT, () => {
-  console.log("Server running");
+  console.log("Server now running");
 });

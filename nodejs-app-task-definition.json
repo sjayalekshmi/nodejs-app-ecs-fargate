@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:415999742518:task-definition/nodejs-app-task-definition:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:415999742518:task-definition/nodejs-app-task-definition:4",
     "containerDefinitions": [
         {
             "name": "nodejs-app",
-            "image": "415999742518.dkr.ecr.us-east-2.amazonaws.com/nodejs-app",
+            "image": "415999742518.dkr.ecr.us-east-2.amazonaws.com/nodejs-app:ec3d7da3b3ce2fa5f1372eba25853c1f601c7f31",
             "cpu": 0,
             "portMappings": [
                 {
@@ -16,10 +16,8 @@
             ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -36,9 +34,10 @@
         }
     ],
     "family": "nodejs-app-task-definition",
+    "taskRoleArn": "arn:aws:iam::415999742518:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::415999742518:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 4,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -56,6 +55,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -84,7 +86,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-10-09T19:50:46.987Z",
+    "registeredAt": "2024-10-09T21:05:52.834Z",
     "registeredBy": "arn:aws:sts::415999742518:assumed-role/Admin/sasija-Isengard",
     "tags": []
 }

@@ -71,11 +71,8 @@ app.use("/graphql", graphqlHTTP({
 );
 
 app.get("/", function (req, res) {
-res.send(`
-    <h2>
-     That was easy.
-    </h2>
-  `);
+var text="hello world";
+res.send(text);
 });
 
 app.get("/rest/getAllUsers", (req, res) => {
